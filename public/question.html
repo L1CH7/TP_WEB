@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>AskMe Ivanov</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css"/>
+  <link rel="stylesheet" type="text/css" href="../static/css/main.css"/>
+</head>
+<body class="d-flex flex-column h-100">
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-sm-fluid container-lg">
+      <a class="navbar-brand">AskMe Ivanov</a>
+      <form class="d-flex justify-content-start" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success" type="submit">Ask!</button>
+      </form>
+
+      <div class="d-flex justify-content-between gap-3">
+        <div class="border">
+          <img
+            src="/static/img/img.jpg"
+            class="avatar"
+            alt="..."
+          />
+        </div>
+        <div class="d-flex flex-column justify-content-between">
+          <div>Ivanoff</div>
+          <div>
+            <a href="/public/settings.html">Settings</a>
+            <a href="/public/logout.html">Log Out</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container-fluid container-lg mt-3 pt-3 pb-sm-3 flex-shrink-0">
+    <div class="row">
+      <div class="col-8">
+        <!--  content  -->
+        <article class="mb-3 w-100">
+          <div class="row g-0">
+            <div class="col-2 p-2">
+              <div class="mb-3">
+                <img
+                  src="/static/img/img.jpg"
+                  class="img-fluid rounded mx-auto d-block question-image"
+                  alt="..."
+                />
+              </div>
+              <div class="input-group flex-nowrap">
+                <input type="number" value="5" class="form-control"/>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="/public/question.html">Question</a>
+                </h5>
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+                <div class="col">
+                  <span>Tags:</span>
+                  <a href="/public/tag.html">tag1</a>
+                  <a href="/public/tag.html">tag2</a>
+                  <a href="/public/tag.html">tag3</a>
+                  <a href="/public/tag.html">tag4</a>
+                  <a href="/public/tag.html">tag5</a>
+                  <a href="/public/tag.html">tag6</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <hr class="bg-dark border-2 border-top border-dark g-3" />
+        <article class="card mb-3 w-100 question">
+          <div class="row g-0">
+            <div class="col-2 p-2">
+              <div class="mb-3">
+                <img
+                  src="/static/img/img.jpg"
+                  class="img-fluid rounded mx-auto d-block question-image"
+                  alt="..."
+                />
+              </div>
+              <div class="input-group flex-nowrap">
+                <input type="number" value="5" class="form-control"/>
+              </div>
+             <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1">
+                <label class="form-check-label">Correct</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="card mb-3 w-100 question">
+          <div class="row g-0">
+            <div class="col-2 p-2">
+              <div class="mb-3">
+                <img
+                  src="/static/img/img.jpg"
+                  class="img-fluid rounded mx-auto d-block question-image"
+                  alt="..."
+                />
+              </div>
+              <div class="input-group flex-nowrap">
+                <input type="number" value="5" class="form-control"/>
+              </div>
+             <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1">
+                <label class="form-check-label">Correct</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <hr class="bg-dark border-2 border-top border-dark g-3" />
+        <form class="mb-5 d-flex flex-column gap-0">
+          <div class="input-group mt-3 mb-3">
+            <textarea class="form-control" id="text" rows="6" placeholder="Enter your answer here" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-outline-success col-2 g-3" >Answer!</button>
+        </form>
+
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <h3>Popular Tags</h3>
+          <div class="text-wrap d-flex gap-3 flex-wrap align-self-sm-auto w-75">
+            <span class="program-lang fw-bolder"><a class="badge link-primary">Primary</a></span>
+            <span class="program-lang fw-bolder"><a class="badge link-secondary" href = "">Secondary</a></span>
+            <span class="program-lang fw-bolder"><a class="badge link-success" href = "">Success</a></span>
+            <span class="program-lang fw-bolder"><a class="badge link-danger" href = "">Danger</a></span>
+            <span class="program-lang fw-bolder"><a class="badge link-warning" href = "">Warning</a></span>
+            <span class="program-lang fw-bolder"><a class="badge link-info" href = "">Info</a></span>
+            <span class="program-lang fw-bolder"><a class="badge link-light" href = "">Light</a></span>
+            <span class="program-lang fw-bolder"><a class="badge link-dark" href = "">Dark</a></span>
+          </div>
+        </div>
+        <h3 class="mt-5">Best Members</h3>
+        <div>
+          <a href="/public/member.html" class="d-block">Mr. Freeman</a>
+          <a href="/public/member.html" class="d-block">Golub</a>
+          <a href="/public/member.html" class="d-block">Karburator</a>
+          <a href="/public/member.html" class="d-block">Kapybara</a>
+          <a href="/public/member.html" class="d-block">Igor</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer mt-auto p-3 bg-light">
+    <div class="container">
+      <span class="text-muted">Place sticky footer content here.</span>
+    </div>
+  </footer>
+  <script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
