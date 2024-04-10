@@ -14,6 +14,13 @@ class Command(BaseCommand):
         parser.add_argument("ratio", type=int)
 
     def handle(self, *args, **kwargs):
+        User.objects.all().delete()
+        Profile.manager.all().delete()
+        Tag.manager.all().delete()
+        Question.manager.all().delete()
+        QuestionLike.objects.all().delete()
+        Comment.manager.all().delete()
+        CommentLike.objects.all().delete()
         ratio = kwargs['ratio']
         profiles = [
             Profile(

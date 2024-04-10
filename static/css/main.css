@@ -98,3 +98,30 @@ header {
 .program-lang > a {
   text-decoration: none;
 }
+
+.program-lang {
+    line-height: 35px;
+}
+
+.item:hover, .item-active:hover {
+    color: rgb(128, 128, 128);
+
+}
+
+.item {
+    text-decoration: none;
+    color: black;
+}
+
+.item-active {
+    text-decoration: none;
+    color: rgb(128, 128, 128);
+}
+
+.fa-arrow-down:hover {
+    color: red;
+}
+
+.fa-arrow-up:hover {
+    color: green;
+}

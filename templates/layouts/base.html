@@ -5,6 +5,8 @@
   <meta charset="utf8">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>AskMe Ivanov</title>
+  <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
 </head>
@@ -39,23 +41,18 @@
         <div class="row">
           <h3>Popular Tags</h3>
           <div class="text-wrap d-flex gap-3 flex-wrap align-self-sm-auto w-75">
-            <span class="program-lang fw-bolder"><a class="badge link-primary" href="{% url 'tag' tag_name="Primary" %}">Primary</a></span>
-            <span class="program-lang fw-bolder"><a class="badge link-secondary" href = "{% url 'tag' tag_name="Secondary" %}">Secondary</a></span>
-            <span class="program-lang fw-bolder"><a class="badge link-success" href = "{% url 'tag' tag_name="Success" %}">Success</a></span>
-            <span class="program-lang fw-bolder"><a class="badge link-danger" href = "{% url 'tag' tag_name="Danger" %}">Danger</a></span>
-            <span class="program-lang fw-bolder"><a class="badge link-warning" href = "{% url 'tag' tag_name="Warning" %}">Warning</a></span>
-            <span class="program-lang fw-bolder"><a class="badge link-info" href = "{% url 'tag' tag_name="Info" %}">Info</a></span>
-            <span class="program-lang fw-bolder"><a class="badge link-light" href = "{% url 'tag' tag_name="Light" %}">Light</a></span>
-            <span class="program-lang fw-bolder"><a class="badge link-dark" href = "{% url 'tag' tag_name="Dark" %}">Dark</a></span>
+            {% for tag in tags %}
+              <div class='program-lang fw-bolder'>
+                <a class="badge link-primary" href="{% url 'tag' tag_name=tag.name %}">{{ tag.name }}</a>
+              </div>
+            {% endfor %}
           </div>
         </div>
         <h3 class="mt-5">Best Members</h3>
         <div>
-          <a href="/template/member.html" class="d-block">Mr. Freeman</a>
-          <a href="/template/member.html" class="d-block">Golub</a>
-          <a href="/template/member.html" class="d-block">Karburator</a>
-          <a href="/template/member.html" class="d-block">Kapybara</a>
-          <a href="/template/member.html" class="d-block">Igor</a>
+          {% for some_user in users %}
+            <a class="d-block" href="">{{ some_user.user.username }}</a>
+          {% endfor %}
         </div>
       </div>
     </div>

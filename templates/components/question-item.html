@@ -4,14 +4,18 @@
   <div class="row g-0">
     <div class="col-2 p-2">
       <div class="mb-3">
-        <img
-          src="{% static 'img/img.jpg' %}"
-          class="img-fluid rounded mx-auto d-block question-image"
-          alt="..."
-        />
+        <img src="{% static 'img/img.jpg' %}" class="img-fluid rounded mx-auto d-block question-image" alt="..."/>
       </div>
-      <div class="input-group flex-nowrap">
-        <input type="number" value="5" class="form-control"/>
+      <div class="d-flex align-items-center">
+        <i class="fas fa-arrow-down fa-lg"></i>
+          {% if question.get_likes_count > 0 %}
+            <span class="text-success mx-1">{{ question.get_likes_count }}</span>
+          {% elif question.get_likes_count < 0 %}
+            <span class="text-danger mx-1">{{ question.get_likes_count }}</span>
+          {% else %}
+            <span class="mx-1">{{ question.get_likes_count }}</span>
+          {% endif %}
+        <i class="fas fa-arrow-up fa-lg"></i>
       </div>
     </div>
     <div class="col">
@@ -23,15 +27,12 @@
           {{ question.content }}
         </p>
         <div class="row">
-          <a class="col-4" href="{% url 'question' question_id=question.id %}">Answers (3)</a>
-          <div class="col-8">
-            <span>Tags:</span>
-            <a href="{% url 'tag' tag_name="tag1" %}">tag1</a>
-            <a href="{% url 'tag' tag_name="tag2" %}">tag2</a>
-            <a href="{% url 'tag' tag_name="tag3" %}">tag3</a>
-            <a href="{% url 'tag' tag_name="tag4" %}">tag4</a>
-            <a href="{% url 'tag' tag_name="tag5" %}">tag5</a>
-            <a href="{% url 'tag' tag_name="tag6" %}">tag6</a>
+          <div class="col-2 fs-5"><a class="item" href="{% url 'question' question_id=question.id %}"><i class="fas fa-comment-dots"></i> {{ question.get_answers_count }}</a></div>
+          <div class="col fs-5 program-lang">
+            Tags:
+            {% for tag in question.tags.all %}
+              <a class="badge bg-light item" id="tag-{{forloop.counter}}" href="{% url 'tag' tag_name=tag.name %}">{{tag.name}}</a>
+            {% endfor %}
           </div>
         </div>
       </div>
