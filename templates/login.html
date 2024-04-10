@@ -1,0 +1,30 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block auth %}
+  {% include 'components/signup_on_nav.html' %}
+{% endblock auth %}
+
+{% block content %}
+<h2>Log In</h2>
+<div class="row">
+  <div class="container">
+    <div class="w-75">
+      <div class="alert alert-danger p-1 mt-3" role="alert">Sorry, you typed wrong password</div>
+      <form class="mt-4">
+        <div class="input-group mb-4">
+          <span class="input-group-text w-25">Login:</span>
+          <input type="text" class="form-control" id="login">
+        </div>
+        <div class="input-group mb-4">
+          <span class="input-group-text w-25">Password:</span>
+          <input type="password" class="form-control" id="password">
+        </div>
+        <button type="submit" class="btn btn-outline-success btn-block mb-3">Log In!</button>
+      </form>
+      <a href="">Create a new account</a>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+      

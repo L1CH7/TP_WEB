@@ -1,0 +1,29 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block auth %}
+  {% include 'components/auth_on_nav.html' %}
+{% endblock auth %}
+
+{% block content %}
+<h2>New Question</h2>
+<div class="row">
+  <form class="mt-2 d-flex flex-column gap-4">
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="title-addon">Title</span>
+      <input type="text" class="form-control" id="title" placeholder="Enter title" required>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="text-addon">Text</span>
+      <textarea class="form-control" id="text" rows="6" placeholder="Enter text" required></textarea>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="tags-addon">Tags</span>
+      <input type="text" class="form-control" id="tags" placeholder="Enter tags" required>
+    </div>
+    <button type="submit" class="btn btn-outline-success col-2 g-3" >Ask!</button>
+  </form>
+</div>
+
+{% endblock content %}
+     

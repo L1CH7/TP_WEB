@@ -1,0 +1,59 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block auth %}
+  {% include 'components/auth_on_nav.html' %}
+{% endblock auth %}
+
+{% block content %}
+
+<article class="mb-3 w-100">
+  <div class="row g-0">
+    <div class="col-2 p-2">
+      <div class="mb-3">
+        <img
+          src="{% static 'img/img.jpg' %}"
+          class="img-fluid rounded mx-auto d-block question-image"
+          alt="..."
+        />
+      </div>
+      <div class="input-group flex-nowrap">
+        <input type="number" value="5" class="form-control"/>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ question.title }}
+        </h5>
+        <p class="card-text">{{ question.content }}</p>
+        <div class="col">
+          <span>Tags:</span>
+          <a href="{% url 'tag' tag_name="tag1" %}">tag1</a>
+          <a href="{% url 'tag' tag_name="tag2" %}">tag2</a>
+          <a href="{% url 'tag' tag_name="tag3" %}">tag3</a>
+          <a href="{% url 'tag' tag_name="tag4" %}">tag4</a>
+          <a href="{% url 'tag' tag_name="tag5" %}">tag5</a>
+          <a href="{% url 'tag' tag_name="tag6" %}">tag6</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+<hr class="bg-dark border-2 border-top border-dark g-3" />
+
+{% for comment in comments %}
+{% include 'components/comment-item.html' %}
+{% endfor %}
+
+<hr class="bg-dark border-2 border-top border-dark g-3" />
+<form class="mb-5 d-flex flex-column gap-0">
+  <div class="input-group mt-3 mb-3">
+    <textarea class="form-control" id="text" rows="6" placeholder="Enter your answer here" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-outline-success col-2 g-3" >Answer!</button>
+</form>
+  
+{% include 'components/paginator.html' with root='question' question_id=question.id%}
+
+{% endblock content %}

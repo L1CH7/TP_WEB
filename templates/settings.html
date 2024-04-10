@@ -1,0 +1,32 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block auth %}
+  {% include 'components/auth_on_nav.html' %}
+{% endblock auth %}
+
+{% block content %}
+
+<h2>Settings: Ivanoff</h2>
+<form class="mt-4 mt-sm-3" action="" method="POST">
+  <div class="input-group mb-4">
+    <span class="input-group-text w-25">Login:</span>
+    <input type="text" class="form-control" id="login" value="ambiguousname">
+  </div>
+  <div class="input-group mb-4">
+    <span class="input-group-text w-25">E-Mail:</span>
+    <input type="email" class="form-control" id="email" value="ivanoff@example.gov">
+  </div>
+  <div class="input-group mb-4">
+    <span class="input-group-text w-25">Username:</span>
+    <input type="text" class="form-control" id="username" value="Ivanoff">
+  </div>
+  <div class="input-group mb-4">
+    <span class="input-group-text w-25">Upload avatar:</span>
+    <input type="file" class="form-control" id="avatar">
+  </div>
+  <button type="submit" class="btn btn-outline-success btn-block mb-3">Save</button>
+</form>
+  
+{% endblock content %}
+      

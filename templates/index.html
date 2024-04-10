@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block auth %}
+  {% include 'components/auth_on_nav.html' %}
+{% endblock auth %}
+
+{% block content %}
+<div class="d-flex gap-3 align-content-center">
+  <h1>New Questions</h1>
+  <a href="{% url 'hot' %}">Hot Questions</a>
+</div>
+  
+{% for question in questions %}
+{% include 'components/question-item.html' %}
+{% endfor %}
+{% include 'components/paginator.html' with root='index' %}
+{% endblock content %}
