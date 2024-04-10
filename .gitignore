@@ -1,5 +1,6 @@
 example/
 temp/
+askme_venv/
 .DS_Store
 
 # Created by https://www.toptal.com/developers/gitignore/api/pycharm,django
