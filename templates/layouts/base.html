@@ -26,6 +26,11 @@
 
       <div class="d-flex justify-content-between gap-3">
         {% block auth %}
+          {% if user.is_authenticated %}
+            {% include 'components/auth_on_nav.html' %}
+          {% else %}
+            {% include 'components/signup_on_nav.html' %}
+          {% endif %}
         {% endblock auth %}
       </div>
     </div>

@@ -7,24 +7,20 @@
         <img
           src="{% static 'img/img.jpg' %}"
           class="img-fluid rounded mx-auto d-block question-image"
-          alt="..."
+          alt=""
         />
       </div>
       <div class="g-4 d-flex">
-        <div class="col-2">
-          {% if comment.get_likes_count > 0 %}
-            <i class="fas fa-arrow-down fa-lg"></i>
-            <span class="text-success mx-1">{{ comment.get_likes_count }}</span>
-            <i class="fas fa-arrow-up fa-lg text-success"></i>
-          {% elif comment.get_likes_count < 0 %}
-            <i class="fas fa-arrow-down fa-lg text-danger"></i>
-            <span class="text-danger mx-1">{{ comment.get_likes_count }}</span>
-            <i class="fas fa-arrow-up fa-lg"></i>
+        <div class="d-flex align-items-center">
+          <i class="fas fa-arrow-down fa-lg"></i>
+            {% if comment.get_likes_count > 0 %}
+              <span class="text-success mx-1">{{ comment.get_likes_count }}</span>
+            {% elif comment.get_likes_count < 0 %}
+              <span class="text-danger mx-1">{{ comment.get_likes_count }}</span>
             {% else %}
-            <i class="fas fa-arrow-down fa-lg"></i>
-            <span class="mx-1">{{ comment.get_likes_count }}</span>
-            <i class="fas fa-arrow-up fa-lg "></i>
-          {% endif %}
+              <span class="mx-1">{{ comment.get_likes_count }}</span>
+            {% endif %}
+          <i class="fas fa-arrow-up fa-lg"></i>
         </div>
         <div class="col-10">
           <div class="form-check">

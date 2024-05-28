@@ -1,14 +1,16 @@
 {% extends 'layouts/base.html' %}
+{% load django_bootstrap5 %}s
 {% load static %}
-
-{% block auth %}
-  {% include 'components/auth_on_nav.html' %}
-{% endblock auth %}
 
 {% block content %}
   
-<h1>Hot questions</h1>
-  
+{#<h1>Hot questions</h1>#}
+{#  #}
+<div class="d-flex gap-3 align-content-center">
+  <h1>Hot Questions</h1>
+  <a href="{% url 'index' %}">New Questions</a>
+</div>
+{#  #}
 {% for question in questions %}
 {% include 'components/question-item.html' %}
 {% endfor %}

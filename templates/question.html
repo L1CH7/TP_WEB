@@ -1,9 +1,6 @@
 {% extends 'layouts/base.html' %}
+{% load django_bootstrap5 %}s
 {% load static %}
-
-{% block auth %}
-  {% include 'components/auth_on_nav.html' %}
-{% endblock auth %}
 
 {% block content %}
 
@@ -17,8 +14,16 @@
           alt="..."
         />
       </div>
-      <div class="input-group flex-nowrap">
-        <input type="number" value="5" class="form-control"/>
+      <div class="d-flex align-items-center">
+        <i class="fas fa-arrow-down fa-lg"></i>
+          {% if question.get_likes_count > 0 %}
+            <span class="text-success mx-1">{{ question.get_likes_count }}</span>
+          {% elif question.get_likes_count < 0 %}
+            <span class="text-danger mx-1">{{ question.get_likes_count }}</span>
+          {% else %}
+            <span class="mx-1">{{ question.get_likes_count }}</span>
+          {% endif %}
+        <i class="fas fa-arrow-up fa-lg"></i>
       </div>
     </div>
     <div class="col">
@@ -27,33 +32,82 @@
           {{ question.title }}
         </h5>
         <p class="card-text">{{ question.content }}</p>
-        <div class="col">
-          <span>Tags:</span>
-          <a href="{% url 'tag' tag_name="tag1" %}">tag1</a>
-          <a href="{% url 'tag' tag_name="tag2" %}">tag2</a>
-          <a href="{% url 'tag' tag_name="tag3" %}">tag3</a>
-          <a href="{% url 'tag' tag_name="tag4" %}">tag4</a>
-          <a href="{% url 'tag' tag_name="tag5" %}">tag5</a>
-          <a href="{% url 'tag' tag_name="tag6" %}">tag6</a>
+        <div class="row">
+          <div class="col fs-5 program-lang">
+            <span>Tags:</span>
+            {% for tag in question.tags.all %}
+              <a class="badge bg-light item" id="tag-{{forloop.counter}}" href="{% url 'tag' tag_name=tag.name %}">{{tag.name}}</a>
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>
   </div>
 </article>
+  
 <hr class="bg-dark border-2 border-top border-dark g-3" />
-
+  
+<h4>Answers:</h4>
+  
 {% for comment in comments %}
 {% include 'components/comment-item.html' %}
 {% endfor %}
 
 <hr class="bg-dark border-2 border-top border-dark g-3" />
-<form class="mb-5 d-flex flex-column gap-0">
-  <div class="input-group mt-3 mb-3">
-    <textarea class="form-control" id="text" rows="6" placeholder="Enter your answer here" required></textarea>
-  </div>
-  <button type="submit" class="btn btn-outline-success col-2 g-3" >Answer!</button>
-</form>
+{#<form class="mb-5 d-flex flex-column gap-0">#}
+{#  <div class="input-group mt-3 mb-3">#}
+{#    <textarea class="form-control" id="text" rows="6" placeholder="Enter your answer here" required></textarea>#}
+{#  </div>#}
+{#  <button type="submit" class="btn btn-outline-success col-2 g-3" >Answer!</button>#}
+{#</form>#}
+  
+  
+{#  #}
+{#  #}
+{#<div class="question-primary">#}
+{#    <div class="row">#}
+{#        <div class="row">#}
+{#            <div class="col-3">#}
+{#              <img alt="" class="question-image-primary" src="{% static '/img/img.jpg' %}">#}
+{#              <div class="d-flex align-items-center">#}
+{#                <i class="fas fa-arrow-down fa-lg"></i>#}
+{#                  {% if question.get_likes_count > 0 %}#}
+{#                    <span class="text-success mx-1">{{ question.get_likes_count }}</span>#}
+{#                  {% elif question.get_likes_count < 0 %}#}
+{#                    <span class="text-danger mx-1">{{ question.get_likes_count }}</span>#}
+{#                  {% else %}#}
+{#                    <span class="mx-1">{{ question.get_likes_count }}</span>#}
+{#                  {% endif %}#}
+{#                <i class="fas fa-arrow-up fa-lg"></i>#}
+{#              </div>#}
+{#            </div>#}
+{#            <div class="col-9">#}
+{#                <div class="question-title"> {{question.title}} </div>#}
+{#                <div class="question-text">#}
+{#                    {{ question.content}}#}
+{#                </div>#}
+{#            <div class="g-4 d-flex">#}
+{#              <div class="col-7 fs-5 program-lang">#}
+{#                Tags: {% for tag in question.tags.all %}#}
+{#                    <a class="badge bg-light item" id="tag-{{forloop.counter}}" href="{% url 'tag' tag_name=tag.name %}">{{tag.name}}</a>#}
+{#                {% endfor %}#}
+{#              </div>#}
+{#            </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <hr class="bg-dark border-2 border-top border-dark g-3"/>#}
+{#        {% for comment in comments %}#}
+{#        {% include 'components/comment-item.html' %}#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#    <hr class="bg-dark border-2 border-top border-dark g-3" />#}
+{#</div>#}
+{#  #}
   
 {% include 'components/paginator.html' with root='question' question_id=question.id%}
-
+<form method="post">
+  {% csrf_token %}
+  {% bootstrap_form comment_form %}
+  <button type="submit" class="btn btn-primary col-2 g-3 mt-3" >Answer</button>
+</form>
 {% endblock content %}
